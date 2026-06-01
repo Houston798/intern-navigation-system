@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import authRoutes from './routes/auth.js';
 
 dotenv.config();
 
@@ -15,9 +16,19 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Basic routes placeholder
+// Auth routes
+app.use('/api/auth', authRoutes);
+
+// API info
 app.get('/api', (req, res) => {
-  res.json({ message: '实习生成长导航 API', version: '1.0.0' });
+  res.json({ 
+    message: '实习生成长导航 API', 
+    version: '1.0.0',
+    endpoints: {
+      auth: '/api/auth',
+      health: '/api/health'
+    }
+  });
 });
 
 app.listen(PORT, () => {
