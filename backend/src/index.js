@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import aiRoutes from './routes/ai.js';
+import onboardingRoutes from './routes/onboarding.js';
 
 dotenv.config();
 
@@ -23,6 +24,9 @@ app.use('/api/auth', authRoutes);
 // AI routes
 app.use('/api/ai', aiRoutes);
 
+// Onboarding routes
+app.use('/api/onboarding', onboardingRoutes);
+
 // API info
 app.get('/api', (req, res) => {
   res.json({ 
@@ -31,6 +35,7 @@ app.get('/api', (req, res) => {
     endpoints: {
       auth: '/api/auth',
       ai: '/api/ai',
+      onboarding: '/api/onboarding',
       health: '/api/health'
     }
   });
