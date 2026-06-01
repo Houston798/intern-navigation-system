@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import aiRoutes from './routes/ai.js';
 import onboardingRoutes from './routes/onboarding.js';
+import goalsRoutes from './routes/goals.js';
+import tasksRoutes from './routes/tasks.js';
 
 dotenv.config();
 
@@ -27,6 +29,12 @@ app.use('/api/ai', aiRoutes);
 // Onboarding routes
 app.use('/api/onboarding', onboardingRoutes);
 
+// Goals routes
+app.use('/api/goals', goalsRoutes);
+
+// Tasks routes
+app.use('/api/tasks', tasksRoutes);
+
 // API info
 app.get('/api', (req, res) => {
   res.json({ 
@@ -36,6 +44,8 @@ app.get('/api', (req, res) => {
       auth: '/api/auth',
       ai: '/api/ai',
       onboarding: '/api/onboarding',
+      goals: '/api/goals',
+      tasks: '/api/tasks',
       health: '/api/health'
     }
   });
